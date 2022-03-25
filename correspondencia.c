@@ -26,7 +26,7 @@ main (int argc, char **argv)
   
   if (rank%2==0)
   {
-    char mess[] = "Hello World";
+    char mess[] = "Hello Diego!";
     printf("%i sent %s to %i\n", rank, mess, rank+1);
     // for(i=1;i<num;i++){
     //   MPI_Send(mess, strlen(mess) + 1, MPI_CHAR, i, MESSTAG, MPI_COMM_WORLD);
