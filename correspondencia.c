@@ -27,7 +27,7 @@ main (int argc, char **argv)
   if (rank%2==0)
   {
     char mess[] = "Hello World";
-    printf("%i sent %s\n", rank, mess);
+    printf("%i sent %s to %i\n", rank, mess, rank+1);
     // for(i=1;i<num;i++){
     //   MPI_Send(mess, strlen(mess) + 1, MPI_CHAR, i, MESSTAG, MPI_COMM_WORLD);
     // }
@@ -37,8 +37,8 @@ main (int argc, char **argv)
   {
     char mess[MAXLEN];
     MPI_Status status;
-    MPI_Recv (mess, MAXLEN, MPI_CHAR, 0, MESSTAG, MPI_COMM_WORLD, &status);
-    printf ("%i received %s\n", rank, mess);
+    MPI_Recv (mess, MAXLEN, MPI_CHAR, rank-1, MESSTAG, MPI_COMM_WORLD, &status);
+    printf ("%i received %s from %i\n", rank, mess, rank-1);
   }
   //----(4) CLAUSURA DEL ENTORNO----//
   MPI_Finalize ();
